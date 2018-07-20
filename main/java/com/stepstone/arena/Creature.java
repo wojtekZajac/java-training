@@ -1,6 +1,6 @@
 package com.stepstone.arena;
 
-public abstract class Creature {
+public abstract class Creature implements Fightable{
 
     private Integer strength;
     private Integer dexterity;
@@ -12,8 +12,18 @@ public abstract class Creature {
     private Integer lifePoints;
     private CreatureType type;
 
+    @Override
+    public int fight(Creature target) {
+        return 0;
+    }
+
+    @Override
+    public void dodge(int potentialDamage, Creature attacker) {
+
+    }
+
     public Creature(Integer strength, Integer dexterity, Integer initiative, Integer velocity,
-        Integer endurance, Integer numberOfAttacks, Integer numberOfDodges, Integer lifePoints, CreatureType type) {
+                    Integer endurance, Integer numberOfAttacks, Integer numberOfDodges, Integer lifePoints, CreatureType type) {
         this.strength = strength;
         this.dexterity = dexterity;
         this.initiative = initiative;
@@ -56,6 +66,10 @@ public abstract class Creature {
 
     public Integer getNumberOfDodges() {
         return numberOfDodges;
+    }
+
+    public void setLifePoints(Integer lifePoints) {
+        this.lifePoints = lifePoints;
     }
 
     public Integer getLifePoints() {
